@@ -31,5 +31,5 @@
 
 ## 🔅 프로젝트 구조
 
-<img src="https://cdn.discordapp.com/attachments/393025698907947009/1224267515824439376/image.png?ex=661cdef9&is=660a69f9&hm=f680237181f7a0a4d720b72d53e79ff67361f3588d72a939b5c077dee9ded09f&" alt="drawing" width="600"/>
+<img src="https://cdn.discordapp.com/attachments/393025698907947009/1224268422095966218/image.png?ex=661cdfd1&is=660a6ad1&hm=19d0e769c6aea92744471e94e0379496a70530d8a21556fe90621b4a983060ef&" alt="drawing" width="600"/>
 
