@@ -261,7 +261,6 @@ public class EndUserServiceImpl implements EndUserService {
         redisUtilService.setDataExpire(endUser.getEmail(), refreshToken, refreshTime);
         addTokenAndCookieToResponse(response, refreshToken, AwsDomain);
         JwtDto jwtDto = new JwtDto(aToken);
-        this.endUserRepository.save(endUser);
         log.info("refreshPage 완료 email: {}, ip address: {}", email, ip);
         return jwtDto;
     }
@@ -346,7 +345,7 @@ public class EndUserServiceImpl implements EndUserService {
         cookie.setPath("/");
         cookie.setMaxAge(60 * 60 * 24 * 14); // 14 day
         cookie.setSecure(true);  // 추후 https 구현시 true로
-        cookie.setAttribute("SameSite", "None"); // 추후 같은 사이트에서만 실행할 수 있게 변경
+        cookie.setAttribute("SameSite", "lax"); // 추후 같은 사이트에서만 실행할 수 있게 변경
         cookie.setHttpOnly(true);
         cookie.setDomain(awsDomain);
 

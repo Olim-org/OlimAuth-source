@@ -33,7 +33,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedMethods(ALLOWED_METHOD_NAMES.split(","))
                 .allowCredentials(true)
                 .allowedHeaders("*")
-                .allowedOrigins("http://localhost:8000","http://localhost:3000", "http://localhost:8080", "https://olim-crm-front.vercel.app", "http://localhost:8000", "http://localhost");
+                .allowedOrigins("https://olim-crm-front.vercel.app", "http://localhost:8000", "http://localhost");
     }
     @Override
     public void addFormatters(FormatterRegistry registry) {

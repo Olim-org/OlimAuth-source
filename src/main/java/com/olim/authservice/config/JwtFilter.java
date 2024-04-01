@@ -52,51 +52,10 @@ public class JwtFilter extends OncePerRequestFilter {
                     myCookie.setMaxAge(0);
                     myCookie.setPath("/");
                     myCookie.setSecure(true);  // 추후 https 구현시 true로
-                    myCookie.setAttribute("SameSite", "None"); // 추후 같은 사이트에서만 실행할 수 있게 변경
+                    myCookie.setAttribute("SameSite", "lax");
                     myCookie.setHttpOnly(true);
                     response.addCookie(myCookie);
                     response.setHeader("Authorization", null);
-                }
-            } else {
-                Cookie cookie = getCookie(request, "refresh_token");
-                final String refreshToken = cookie == null ? null : cookie.getValue();
-                if (refreshToken != null) {
-                    if (jwtTokenProvider.validateToken(refreshToken, request)) {
-                        if (redisUtilService.getData(refreshToken) == null) {
-                            jwtExceptionHandler(response, "Refresh_Token Expired", HttpStatus.UNAUTHORIZED);
-                            return;
-                        }
-                        if (!redisUtilService.getData(refreshToken).equals(refreshToken)) {
-                            jwtExceptionHandler(response, "Refresh_Token is not correct", HttpStatus.UNAUTHORIZED);
-                            return;
-                        }
-                        String refreshEmail = jwtTokenProvider.getEmail(refreshToken);
-                        String accessEmail = jwtTokenProvider.getEmail(token);
-                        if (!refreshEmail.equals(accessEmail)) {
-                            jwtExceptionHandler(response, "Refresh_Token is not correct", HttpStatus.UNAUTHORIZED);
-                            return;
-                        }
-                        UserRoleEnum role = jwtTokenProvider.getRole(token);
-                        UUID id = jwtTokenProvider.getId(token);
-                        String newAccessToken = jwtTokenProvider.createToken(refreshEmail, role, id);
-                        String newRefreshToken = jwtTokenProvider.CreateRefreshToken(refreshEmail);
-                        this.redisUtilService.setDataExpire(refreshEmail, newRefreshToken, refreshTime);
-                        response.setHeader("Authorization", newAccessToken);
-                        Cookie newCookie = new Cookie("refresh_token", newRefreshToken);
-                        newCookie.setPath("/");
-                        newCookie.setMaxAge(60 * 60 * 24 * 14); // 14 day
-                        newCookie.setSecure(true);  // 추후 https 구현시 true로
-                        newCookie.setAttribute("SameSite", "None");
-                        newCookie.setHttpOnly(true);
-                        newCookie.setDomain(awsDomain);
-
-                        response.addCookie(newCookie);
-                        Authentication authentication = jwtTokenProvider.getAuthentication(newAccessToken);
-                        SecurityContextHolder.getContext().setAuthentication(authentication);
-                    }
-                } else {
-                    jwtExceptionHandler(response, "Refresh_Token Expired", HttpStatus.UNAUTHORIZED);
-                    return;
                 }
             }
         }

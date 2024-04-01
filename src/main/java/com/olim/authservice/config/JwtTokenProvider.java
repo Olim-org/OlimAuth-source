@@ -49,11 +49,6 @@ public class JwtTokenProvider {
         this.userDetailsService = userDetailsService;
     }
 
-    // 1시간 * 24 * 100
-//    private long tokenTime =  2 * 24 * 60 * 60 * 1000L;
-//
-//    // 2주 * 100
-//    private long refreshTime = 14 * 24 * 60 * 60 * 1000L;
 
     public String createToken(String email, UserRoleEnum role, UUID id) {
         Claims claims = Jwts.claims().setSubject(email);
