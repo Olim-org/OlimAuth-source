@@ -1,6 +1,6 @@
 ## 🙌 올림 프로젝트 CRM
 
-<img src="https://cdn.discordapp.com/attachments/393025698907947009/1219293363501535363/2023-12-26_143330.png?ex=660ac66f&is=65f8516f&hm=99f744e1e9d97969c392296d1fa1eca9ba2ea903d8df684fd901620e6dfcc191&" alt="drawing" width="400"/>
+<img src="https://github.com/user-attachments/assets/fa0f89c0-d2f9-436f-9a43-7eead5cf5bb3" alt="drawing" width="400"/>
 
 #### 올림 프로젝트는 개발 중단된 프로젝트입니다. 아래 웹 사이트를 통해 테스트할 수 있습니다.
 #### [Github 조직](https://github.com/Olim-org) 
@@ -31,5 +31,5 @@
 
 ## 🔅 프로젝트 구조
 
-<img src="https://cdn.discordapp.com/attachments/393025698907947009/1224268422095966218/image.png?ex=661cdfd1&is=660a6ad1&hm=19d0e769c6aea92744471e94e0379496a70530d8a21556fe90621b4a983060ef&" alt="drawing" width="600"/>
+<img src="https://github.com/user-attachments/assets/0dd87684-fd92-4ecd-8528-c5837771fc64" alt="drawing" width="600"/>
 
